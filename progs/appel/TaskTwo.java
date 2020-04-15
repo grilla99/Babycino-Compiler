@@ -7,11 +7,12 @@ class TaskTwoTest {
 class TaskTwo{
     public int TestTwo(int argumentOne, boolean argumentTwo) {
         // Variables to store results from test
-        int outputOne;
+        boolean outputOne;
         boolean outputTwo;
 
-        outputOne = argumentOne || argumentOne; // Will reject as statement consists of two integers
-        outputTwo = argumentTwo || argumentTwo; // Will reject as statement returns an integer
+        outputOne = argumentOne || argumentTwo;
+        outputTwo = argumentOne || argumentOne;
+
         return 0;
     }
 }

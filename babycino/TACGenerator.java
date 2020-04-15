@@ -243,6 +243,24 @@ public class TACGenerator extends MiniJavaBaseVisitor<TACBlock> {
             result.setResult(res);            
             return result;
         }
+        // Generate code for op
+        else if (op.equals("||")) {
+            String skip = this.genlab(); // Flow control label
+            String end = this.genlab(); // Flow control label
+            String res = this.genreg(); // Register to store result
+
+            result.addAll(expr1); // Value of expression 1
+            result.add(TACOp.mov(res, expr1.getResult())); // Result of expression 1
+            result.add(TACOp.jz(res,skip)); // Skip if true or false
+            result.add(TACOp.jmp(end)); // Jump to end if expression 1 is true
+            result.add(TACOp.label(skip)); //Skips label
+
+            result.addAll(expr2); // Value of expression 2
+            result.add(TACOp.mov(res, expr2.getResult())); // Result of expression 2
+            result.add(TACOp.label(end)); // End label
+            result.setResult(res); // Set result value = local var res
+            return result;
+        }
 
         // Generate the correct code for the operation.
         int n = TACOp.binopToCode(op);

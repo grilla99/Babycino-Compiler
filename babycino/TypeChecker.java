@@ -146,12 +146,10 @@ public class TypeChecker extends MiniJavaBaseListener {
         switch (op) {
             // AND is the only operator that takes booleans, not ints.
             case "&&":
-                this.check(lhs.isBoolean(), ctx, "Expected boolean as 1st argument to &&; actual type: " + lhs);
-                this.check(rhs.isBoolean(), ctx, "Expected boolean as 2nd argument to &&; actual type: " + rhs);
-                break;
             case "||":
-                this.check(lhs.isBoolean(),ctx, "Expected boolean as integer as 1st argument to ||; actual type " + lhs);
-                this.check(rhs.isInt(), ctx, "Expected integer as 2nd argument to ||; actual type: " + rhs);
+                this.check(lhs.isBoolean(), ctx, "Expected boolean as 1st argument to " + op + "; actual type: " + lhs);
+                this.check(rhs.isBoolean(), ctx, "Expected boolean as 2nd argument to " + op + "; actual type: " + rhs);
+                break;
             default:
                 this.check(lhs.isInt(), ctx, "Expected int as 1st argument to " + op + "; actual type: " + lhs);
                 this.check(rhs.isInt(), ctx, "Expected int as 2nd argument to " + op + "; actual type: " + rhs);

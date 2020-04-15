@@ -48,8 +48,8 @@ public class Babycino {
             ParseTree tree = parse(input);
             SymbolTable sym = semantic(tree);
             List<TACBlock> tac = generateTAC(tree, sym);
-            //System.out.println("UNOPTIMISED INTERMEDIATE CODE:");
-            //dumpTAC(tac);
+           // System.out.println("UNOPTIMISED INTERMEDIATE CODE:");
+            // dumpTAC(tac);
             tac = optimiseTAC(tac);
             //System.out.println("OPTIMISED INTERMEDIATE CODE:");
             //dumpTAC(tac);
